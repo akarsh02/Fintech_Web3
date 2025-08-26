@@ -3,11 +3,23 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 0,
+            "activePatchIndex": 3,
             "patches": [
                 {
                     "date": 1755276641871,
                     "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1756204417645,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,10 +1,16 @@\n import { View, Text } from 'react-native'\n import React from 'react'\n+import { Stack } from 'expo-router'\n \n export default function help() {\n   return (\n     <View>\n-      <Text>help</Text>\n+      <Stack.Screen\n+        options={{\n+          title: \"Help\",\n+          presentation: \"modal\", // works here\n+        }}\n+      />\n     </View>\n   )\n }\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1756204503297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     <View>\n       <Stack.Screen\n         options={{\n           title: \"Help\",\n-          presentation: \"modal\", // works here\n+          presentation: \"modal\", \n         }}\n       />\n     </View>\n   )\n"
+                },
+                {
+                    "date": 1756204530136,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,16 +1,10 @@\n import { View, Text } from 'react-native'\n import React from 'react'\n-import { Stack } from 'expo-router'\n \n export default function help() {\n   return (\n     <View>\n-      <Stack.Screen\n-        options={{\n-          title: \"Help\",\n-          presentation: \"modal\", \n-        }}\n-      />\n+      <Text>help</Text>\n     </View>\n   )\n }\n\\ No newline at end of file\n"
                 }
             ],
             "date": 1755276641871,

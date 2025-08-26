@@ -3,7 +3,7 @@
     "activeCommit": 0,
     "commits": [
         {
-            "activePatchIndex": 36,
+            "activePatchIndex": 46,
             "patches": [
                 {
                     "date": 1753859427395,
@@ -152,6 +152,46 @@
                 {
                     "date": 1756189410537,
                     "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modalsssssssss'}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1756190430609,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modalsssssssss'}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1756204325959,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,12 +8,14 @@\n import { useEffect } from 'react';\n import React = require('react');\n import { TouchableOpacity } from 'react-native';\n import 'react-native-reanimated';\n+import { createNativeStackNavigator } from '@react-navigation/native-stack';\n \n \n \n \n+\n export {\n   // Catch any errors thrown by the Layout component.\n   ErrorBoundary,\n } from 'expo-router';\n@@ -48,8 +50,10 @@\n   if (!loaded) {\n     return null;\n   }\n \n+const Stacks = createNativeStackNavigator();\n+\n   return <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n@@ -68,9 +72,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n+        <Stacks.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1756204334332,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stacks.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1756204429223,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,9 +72,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n+\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1756204565414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,9 +73,15 @@\n           </TouchableOpacity>\n              </Link>)\n         }} />\n \n-        \n+           <Stack.Screen \n+        name=\"help\" \n+        options={{ \n+          title: \"Help\", \n+          presentation: \"modal\"  \n+        }} \n+      />\n       </Stack>\n }\n \n function RootLayoutNav() {\n"
+                },
+                {
+                    "date": 1756204653382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -73,15 +73,16 @@\n           </TouchableOpacity>\n              </Link>)\n         }} />\n \n-           <Stack.Screen \n-        name=\"help\" \n-        options={{ \n-          title: \"Help\", \n-          presentation: \"modal\"  \n-        }} \n-      />\n+        <Stack.Group screenOptions={{ presentation: 'modal' }}>\n+\n+    <Stack.Screen name=\"ComponentName\" component={Component} options={() => ({\n+            presentation: 'modal'\n+    })} />\n+\n+</Stack.Group>\n+\n       </Stack>\n }\n \n function RootLayoutNav() {\n"
+                },
+                {
+                    "date": 1756204768104,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -72,17 +72,16 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n+        <Stack.Screen\n+  name=\"Profile\"\n+  options={{\n+    title: 'Profile',\n+    ...TransitionPresets.ModalSlideFromBottomIOS,\n+  }}\n+/>;\n \n-        <Stack.Group screenOptions={{ presentation: 'modal' }}>\n-\n-    <Stack.Screen name=\"ComponentName\" component={Component} options={() => ({\n-            presentation: 'modal'\n-    })} />\n-\n-</Stack.Group>\n-\n       </Stack>\n }\n \n function RootLayoutNav() {\n"
+                },
+                {
+                    "date": 1756204812696,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,14 +8,11 @@\n import { useEffect } from 'react';\n import React = require('react');\n import { TouchableOpacity } from 'react-native';\n import 'react-native-reanimated';\n-import { createNativeStackNavigator } from '@react-navigation/native-stack';\n+import { TransitionPresets } from '@react-navigation/stack';\n \n \n-\n-\n-\n export {\n   // Catch any errors thrown by the Layout component.\n   ErrorBoundary,\n } from 'expo-router';\n@@ -50,9 +47,8 @@\n   if (!loaded) {\n     return null;\n   }\n \n-const Stacks = createNativeStackNavigator();\n \n   return <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n@@ -75,9 +71,9 @@\n         }} />\n         <Stack.Screen\n   name=\"Profile\"\n   options={{\n-    title: 'Profile',\n+    title: 'Help',\n     ...TransitionPresets.ModalSlideFromBottomIOS,\n   }}\n />;\n \n"
+                },
+                {
+                    "date": 1756204851484,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,18 @@\n import { useFonts } from 'expo-font';\n import { Link, Stack, useRouter } from 'expo-router';\n import * as SplashScreen from 'expo-splash-screen';\n import { StatusBar } from 'expo-status-bar';\n-import { useEffect } from 'react';\n+import { Component, useEffect } from 'react';\n import React = require('react');\n import { TouchableOpacity } from 'react-native';\n import 'react-native-reanimated';\n-import { TransitionPresets } from '@react-navigation/stack';\n+import { createNativeStackNavigator } from '@react-navigation/native-stack';\n \n \n+\n+\n+\n export {\n   // Catch any errors thrown by the Layout component.\n   ErrorBoundary,\n } from 'expo-router';\n@@ -47,8 +50,9 @@\n   if (!loaded) {\n     return null;\n   }\n \n+const Stacks = createNativeStackNavigator();\n \n   return <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n@@ -68,16 +72,11 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen\n-  name=\"Profile\"\n-  options={{\n-    title: 'Help',\n-    ...TransitionPresets.ModalSlideFromBottomIOS,\n-  }}\n-/>;\n \n+        <Stack.Screen name=\"help\" options={{ title: \"Help\", presentation: \"modal\",headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},  }} />\n+\n       </Stack>\n }\n \n function RootLayoutNav() {\n"
+                },
+                {
+                    "date": 1756204878413,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,11 +11,8 @@\n import 'react-native-reanimated';\n import { createNativeStackNavigator } from '@react-navigation/native-stack';\n \n \n-\n-\n-\n export {\n   // Catch any errors thrown by the Layout component.\n   ErrorBoundary,\n } from 'expo-router';\n"
                 }
             ],
             "date": 1753859427395,

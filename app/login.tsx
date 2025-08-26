@@ -1,5 +1,6 @@
 import Colors from '@/constants/Colors';
 import { defaultStyles } from '@/constants/Styles';
+import { Ionicons } from '@expo/vector-icons';
 // import { useSignUp } from '@clerk/clerk-expo';
 import { Link, useRouter } from 'expo-router';
 import { useState } from 'react';
@@ -12,6 +13,13 @@ import {
   KeyboardAvoidingView,
   Platform,
 } from 'react-native';
+
+enum SignInType{
+  phone,Email,Google,Apple
+}
+
+
+
 const LoginScreen = () => {
   const [countryCode, setCountryCode] = useState('+49');
   const [phoneNumber, setPhoneNumber] = useState('');
@@ -19,9 +27,13 @@ const LoginScreen = () => {
   const router = useRouter();
   // const { signUp } = useSignUp();
 
-  const onSignIn = async () => {
+  const onSignIn = async (SignInType) => {
+    if(SignInType.phone){
+
+    }
    
   };
+  
 
   return (
     <KeyboardAvoidingView
@@ -60,6 +72,23 @@ const LoginScreen = () => {
           ]}
           onPress={onSignIn}> <Text> Continue </Text>
          </TouchableOpacity>
+         <View style={{flexDirection:"row",alignItems:"center",gap:16}}>
+         <View style={{flex:1, height:StyleSheet.hairlineWidth, backgroundColor:Colors.gray}}/>
+          <Text style={{ color:Colors.gray,fontSize:20}}>Or continue with</Text>
+         <View style={{flex:1, height:StyleSheet.hairlineWidth, backgroundColor:Colors.gray}}/>
+         </View>
+         <TouchableOpacity onPress={() => onSignIn(SignInType.Email)} style={[defaultStyles.pillButton,{flexDirection:"row",justifyContent:"center",alignItems:"center",gap:16,marginTop:20,backgroundColor:'white'}]}>
+          <Ionicons name='mail' size={24} color={"#000"}/>
+          <Text style={[defaultStyles.buttonText,{color:"#000"}]}>Continue with email</Text>
+          </TouchableOpacity>
+            <TouchableOpacity onPress={() => onSignIn(SignInType.Google)} style={[defaultStyles.pillButton,{flexDirection:"row",justifyContent:"center",alignItems:"center",gap:16,marginTop:8,backgroundColor:'white'}]}>
+          <Ionicons name='logo-google' size={24} color={"#000"}/>
+          <Text style={[defaultStyles.buttonText,{color:"#000"}]}>Continue with Google</Text>
+          </TouchableOpacity>
+            <TouchableOpacity onPress={() => onSignIn(SignInType.Email)} style={[defaultStyles.pillButton,{flexDirection:"row",justifyContent:"center",alignItems:"center",gap:16,marginVertical:8,backgroundColor:'white'}]}>
+          <Ionicons name='logo-apple' size={24} color={"#000"}/>
+          <Text style={[defaultStyles.buttonText,{color:"#000"}]}>Continue with Apple</Text>
+          </TouchableOpacity>
       </View>
     </KeyboardAvoidingView>
   );

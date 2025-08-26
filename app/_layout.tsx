@@ -5,12 +5,11 @@ import { useFonts } from 'expo-font';
 import { Link, Stack, useRouter } from 'expo-router';
 import * as SplashScreen from 'expo-splash-screen';
 import { StatusBar } from 'expo-status-bar';
-import { useEffect } from 'react';
+import { Component, useEffect } from 'react';
 import React = require('react');
 import { TouchableOpacity } from 'react-native';
 import 'react-native-reanimated';
-
-
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 
 export {
@@ -49,6 +48,8 @@ SplashScreen.preventAutoHideAsync();
     return null;
   }
 
+const Stacks = createNativeStackNavigator();
+
   return <Stack>
           <Stack.Screen name="index" options={{ headerShown: false}} />
           <Stack.Screen name="signup" options={{ title:"", headerBackTitle:"",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},
@@ -69,8 +70,9 @@ SplashScreen.preventAutoHideAsync();
           </TouchableOpacity>
              </Link>)
         }} />
-        <Stack.Screen name="help" options={{ title:"Help",presentation:'modalsssssssss'}}/>
-        
+
+        <Stack.Screen name="help" options={{ title: "Help", presentation: "modal",headerBackTitle:"",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},  }} />
+
       </Stack>
 }
 
