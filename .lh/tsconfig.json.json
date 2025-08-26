@@ -1,0 +1,18 @@
+{
+    "sourceFile": "tsconfig.json",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753859542807,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753859542807,
+            "name": "Commit-0",
+            "content": "{\n  \"extends\": \"expo/tsconfig.base\",\n  \"compilerOptions\": {\n    \"strict\": true,\n    \"jsx\": \"react-native\",\n    \"baseUrl\": \".\",\n    \"paths\": {\n      \"@/*\": [\"./*\"]\n    },\n    \"noEmit\": true,\n    \"moduleResolution\": \"node\",\n    \"allowJs\": true,\n    \"esModuleInterop\": true,\n    \"skipLibCheck\": true,\n    \"resolveJsonModule\": true,\n    \"isolatedModules\": true\n  },\n  \"include\": [\n    \"**/*.ts\",\n    \"**/*.tsx\",\n    \".expo/types/**/*.ts\",\n    \"expo-env.d.ts\"\n  ]\n}\n"
+        }
+    ]
+}

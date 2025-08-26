@@ -1,0 +1,162 @@
+{
+    "sourceFile": "app/_layout.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 36,
+            "patches": [
+                {
+                    "date": 1753859427395,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753859443315,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -50,12 +50,12 @@\n function RootLayoutNav() {\n \n \n   return (\n-    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>\n+\n       <Stack>\n         <Stack.Screen name=\"(tabs)\" options={{ headerShown: false }} />\n         <Stack.Screen name=\"modal\" options={{ presentation: 'modal' }} />\n       </Stack>\n-    </ThemeProvider>\n+\n   );\n }\n"
+                },
+                {
+                    "date": 1753859462687,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,10 +52,10 @@\n \n   return (\n \n       <Stack>\n-        <Stack.Screen name=\"(tabs)\" options={{ headerShown: false }} />\n-        <Stack.Screen name=\"modal\" options={{ presentation: 'modal' }} />\n+\n+\n       </Stack>\n \n   );\n }\n"
+                },
+                {
+                    "date": 1753859484714,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,6 +1,5 @@\n import FontAwesome from '@expo/vector-icons/FontAwesome';\n-import { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';\n import { useFonts } from 'expo-font';\n import { Stack } from 'expo-router';\n import * as SplashScreen from 'expo-splash-screen';\n import { useEffect } from 'react';\n"
+                },
+                {
+                    "date": 1753866060765,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,59 @@\n+import FontAwesome from '@expo/vector-icons/FontAwesome';\n+import { useFonts } from 'expo-font';\n+import { Stack } from 'expo-router';\n+import * as SplashScreen from 'expo-splash-screen';\n+import { useEffect } from 'react';\n+import React = require('react');\n+import 'react-native-reanimated';\n+\n+\n+\n+\n+export {\n+  // Catch any errors thrown by the Layout component.\n+  ErrorBoundary,\n+} from 'expo-router';\n+\n+export const unstable_settings = {\n+  // Ensure that reloading on `/modal` keeps a back button present.\n+  initialRouteName: '(tabs)',\n+};\n+\n+// Prevent the splash screen from auto-hiding before asset loading is complete.\n+SplashScreen.preventAutoHideAsync();\n+\n+export default function RootLayout() {\n+  const [loaded, error] = useFonts({\n+    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),\n+    ...FontAwesome.font,\n+  });\n+\n+  // Expo Router uses Error Boundaries to catch errors in the navigation tree.\n+  useEffect(() => {\n+    if (error) throw error;\n+  }, [error]);\n+\n+  useEffect(() => {\n+    if (loaded) {\n+      SplashScreen.hideAsync();\n+    }\n+  }, [loaded]);\n+\n+  if (!loaded) {\n+    return null;\n+  }\n+\n+  return <RootLayoutNav />;\n+}\n+\n+function RootLayoutNav() {\n+\n+\n+  return (\n+\n+      <Stack>\n+          <Stack.Screen name=\"login\" options={{ title: 'Login' }} />\n+      </Stack>\n+\n+  );\n+}\n"
+                },
+                {
+                    "date": 1753866079260,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,69 +51,9 @@\n \n   return (\n \n       <Stack>\n-          <Stack.Screen name=\"login\" options={{ title: 'Login' }} />\n+          <Stack.Screen name=\"login\" options={{ title: 'djdbn' }} />\n       </Stack>\n \n   );\n }\n-import FontAwesome from '@expo/vector-icons/FontAwesome';\n-import { useFonts } from 'expo-font';\n-import { Stack } from 'expo-router';\n-import * as SplashScreen from 'expo-splash-screen';\n-import { useEffect } from 'react';\n-import React = require('react');\n-import 'react-native-reanimated';\n-\n-\n-\n-\n-export {\n-  // Catch any errors thrown by the Layout component.\n-  ErrorBoundary,\n-} from 'expo-router';\n-\n-export const unstable_settings = {\n-  // Ensure that reloading on `/modal` keeps a back button present.\n-  initialRouteName: '(tabs)',\n-};\n-\n-// Prevent the splash screen from auto-hiding before asset loading is complete.\n-SplashScreen.preventAutoHideAsync();\n-\n-export default function RootLayout() {\n-  const [loaded, error] = useFonts({\n-    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),\n-    ...FontAwesome.font,\n-  });\n-\n-  // Expo Router uses Error Boundaries to catch errors in the navigation tree.\n-  useEffect(() => {\n-    if (error) throw error;\n-  }, [error]);\n-\n-  useEffect(() => {\n-    if (loaded) {\n-      SplashScreen.hideAsync();\n-    }\n-  }, [loaded]);\n-\n-  if (!loaded) {\n-    return null;\n-  }\n-\n-  return <RootLayoutNav />;\n-}\n-\n-function RootLayoutNav() {\n-\n-\n-  return (\n-\n-      <Stack>\n-\n-\n-      </Stack>\n-\n-  );\n-}\n"
+                },
+                {
+                    "date": 1753866092115,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n \n   return (\n \n       <Stack>\n-          <Stack.Screen name=\"login\" options={{ title: 'djdbn' }} />\n+          <Stack.Screen name=\"login\" options={{ headerShown: false}} />\n       </Stack>\n \n   );\n }\n"
+                },
+                {
+                    "date": 1753866128873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -51,9 +51,9 @@\n \n   return (\n \n       <Stack>\n-          <Stack.Screen name=\"login\" options={{ headerShown: false}} />\n+          <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n       </Stack>\n \n   );\n }\n"
+                },
+                {
+                    "date": 1753945967401,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,8 +52,10 @@\n   return (\n \n       <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n+          <Stack.Screen name=\"index\" options={{ title:\"\", headerBackTitle:\"\"}} />\n+\n       </Stack>\n \n   );\n }\n"
+                },
+                {
+                    "date": 1753945978045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n   return (\n \n       <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n-          <Stack.Screen name=\"index\" options={{ title:\"\", headerBackTitle:\"\"}} />\n+          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\"}} />\n \n       </Stack>\n \n   );\n"
+                },
+                {
+                    "date": 1753946022944,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n   return (\n \n       <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n-          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\"}} />\n+          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false}} />\n \n       </Stack>\n \n   );\n"
+                },
+                {
+                    "date": 1753946050668,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n   return (\n \n       <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n-          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false}} />\n+          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\"}} />\n \n       </Stack>\n \n   );\n"
+                },
+                {
+                    "date": 1753946056329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,9 +52,9 @@\n   return (\n \n       <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n-          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\"}} />\n+          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false}} />\n \n       </Stack>\n \n   );\n"
+                },
+                {
+                    "date": 1753946102449,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,4 +1,5 @@\n+import Colors from '@/constants/Colors';\n import FontAwesome from '@expo/vector-icons/FontAwesome';\n import { useFonts } from 'expo-font';\n import { Stack } from 'expo-router';\n import * as SplashScreen from 'expo-splash-screen';\n@@ -52,9 +53,9 @@\n   return (\n \n       <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n-          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false}} />\n+          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background}}} />\n \n       </Stack>\n \n   );\n"
+                },
+                {
+                    "date": 1753946607045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,13 @@\n import Colors from '@/constants/Colors';\n+import { Ionicons } from '@expo/vector-icons';\n import FontAwesome from '@expo/vector-icons/FontAwesome';\n import { useFonts } from 'expo-font';\n import { Stack } from 'expo-router';\n import * as SplashScreen from 'expo-splash-screen';\n import { useEffect } from 'react';\n import React = require('react');\n+import { TouchableOpacity } from 'react-native';\n import 'react-native-reanimated';\n \n \n \n@@ -53,9 +55,14 @@\n   return (\n \n       <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n-          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background}}} />\n+          <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n+          headerLeft:()=>(\n+          <TouchableOpacity>\n+              <Ionicons name=\"chevron-back\" size={24} color={Colors.primary} />\n+          </TouchableOpacity>)\n+        }} />\n \n       </Stack>\n \n   );\n"
+                },
+                {
+                    "date": 1753946612098,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -58,9 +58,9 @@\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n           <TouchableOpacity>\n-              <Ionicons name=\"chevron-back\" size={24} color={Colors.primary} />\n+              <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n \n       </Stack>\n"
+                },
+                {
+                    "date": 1753951177584,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -61,9 +61,8 @@\n           <TouchableOpacity>\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n-\n       </Stack>\n \n   );\n }\n"
+                },
+                {
+                    "date": 1753951189718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -52,10 +52,9 @@\n function RootLayoutNav() {\n \n \n   return (\n-\n-      <Stack>\n+<Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n           <TouchableOpacity>\n"
+                },
+                {
+                    "date": 1754636107226,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,9 @@\n \n // Prevent the splash screen from auto-hiding before asset loading is complete.\n SplashScreen.preventAutoHideAsync();\n \n-export default function RootLayout() {\n+ function InitialLayout() {\n   const [loaded, error] = useFonts({\n     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),\n     ...FontAwesome.font,\n   });\n@@ -45,23 +45,23 @@\n   if (!loaded) {\n     return null;\n   }\n \n-  return <RootLayoutNav />;\n-}\n-\n-function RootLayoutNav() {\n-\n-\n-  return (\n-<Stack>\n+  return <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n           <TouchableOpacity>\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n       </Stack>\n+}\n \n+function RootLayoutNav() {\n+\n+\n+  return (\n+\n+\n   );\n }\n"
+                },
+                {
+                    "date": 1754636128195,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,8 +60,8 @@\n function RootLayoutNav() {\n \n \n   return (\n+<InitialLayout/>\n \n-\n   );\n }\n"
+                },
+                {
+                    "date": 1754636133207,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,4 +64,5 @@\n <InitialLayout/>\n \n   );\n }\n+export default RootLayoutNav;\n"
+                },
+                {
+                    "date": 1754637468595,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import Colors from '@/constants/Colors';\n import { Ionicons } from '@expo/vector-icons';\n import FontAwesome from '@expo/vector-icons/FontAwesome';\n import { useFonts } from 'expo-font';\n-import { Stack } from 'expo-router';\n+import { Stack, useRouter } from 'expo-router';\n import * as SplashScreen from 'expo-splash-screen';\n import { useEffect } from 'react';\n import React = require('react');\n import { TouchableOpacity } from 'react-native';\n@@ -29,8 +29,10 @@\n   const [loaded, error] = useFonts({\n     SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),\n     ...FontAwesome.font,\n   });\n+  \n+  const router = useRouter()\n \n   // Expo Router uses Error Boundaries to catch errors in the navigation tree.\n   useEffect(() => {\n     if (error) throw error;\n@@ -49,9 +51,9 @@\n   return <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n-          <TouchableOpacity>\n+          <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n       </Stack>\n"
+                },
+                {
+                    "date": 1754637606656,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n import FontAwesome from '@expo/vector-icons/FontAwesome';\n import { useFonts } from 'expo-font';\n import { Stack, useRouter } from 'expo-router';\n import * as SplashScreen from 'expo-splash-screen';\n+import { StatusBar } from 'expo-status-bar';\n import { useEffect } from 'react';\n import React = require('react');\n import { TouchableOpacity } from 'react-native';\n import 'react-native-reanimated';\n@@ -62,9 +63,13 @@\n function RootLayoutNav() {\n \n \n   return (\n-<InitialLayout/>\n+    <>\n+      <StatusBar style='light' />\n+      <InitialLayout/>\n+    \n+  </>\n \n   );\n }\n export default RootLayoutNav;\n"
+                },
+                {
+                    "date": 1755276436874,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -56,8 +56,15 @@\n           <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n+          <Stack.Screen name=\"login\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n+          headerLeft:()=>(\n+          <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n+              <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n+          </TouchableOpacity>)\n+        }} />\n+        \n       </Stack>\n }\n \n function RootLayoutNav() {\n"
+                },
+                {
+                    "date": 1755276477736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -60,8 +60,12 @@\n           <Stack.Screen name=\"login\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n           <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n+          </TouchableOpacity>),\n+           headerRight:()=>(\n+          <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n+              <Ionicons name=\"help\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n         \n       </Stack>\n"
+                },
+                {
+                    "date": 1755276557587,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>),\n            headerRight:()=>(\n           <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n-              <Ionicons name=\"help\" size={34} color={Colors.primary} />\n+              <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n         \n       </Stack>\n"
+                },
+                {
+                    "date": 1755276601158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -62,9 +62,9 @@\n           <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>),\n            headerRight:()=>(\n-          <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n+          <TouchableOpacity onPress={() => router.push('/help')} style={{padding:10}}>\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>)\n         }} />\n         \n"
+                },
+                {
+                    "date": 1755276692906,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,9 @@\n import Colors from '@/constants/Colors';\n import { Ionicons } from '@expo/vector-icons';\n import FontAwesome from '@expo/vector-icons/FontAwesome';\n import { useFonts } from 'expo-font';\n-import { Stack, useRouter } from 'expo-router';\n+import { Link, Stack, useRouter } from 'expo-router';\n import * as SplashScreen from 'expo-splash-screen';\n import { StatusBar } from 'expo-status-bar';\n import { useEffect } from 'react';\n import React = require('react');\n@@ -62,11 +62,13 @@\n           <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>),\n            headerRight:()=>(\n+            <Link href=\"/help\" asChild>\n           <TouchableOpacity onPress={() => router.push('/help')} style={{padding:10}}>\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n-          </TouchableOpacity>)\n+          </TouchableOpacity>\n+             </Link>)\n         }} />\n         \n       </Stack>\n }\n"
+                },
+                {
+                    "date": 1755276700693,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n               <Ionicons name=\"chevron-back\" size={34} color={Colors.primary} />\n           </TouchableOpacity>),\n            headerRight:()=>(\n             <Link href=\"/help\" asChild>\n-          <TouchableOpacity onPress={() => router.push('/help')} style={{padding:10}}>\n+          <TouchableOpacity>\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n"
+                },
+                {
+                    "date": 1755277028052,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,9 +48,9 @@\n   if (!loaded) {\n     return null;\n   }\n \n-  return <Stack>\n+  return <Slot>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n           <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n@@ -69,9 +69,9 @@\n           </TouchableOpacity>\n              </Link>)\n         }} />\n         \n-      </Stack>\n+      </Slot>\n }\n \n function RootLayoutNav() {\n \n"
+                },
+                {
+                    "date": 1755277036629,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -48,9 +48,9 @@\n   if (!loaded) {\n     return null;\n   }\n \n-  return <Slot>\n+  return <Stack>\n           <Stack.Screen name=\"index\" options={{ headerShown: false}} />\n           <Stack.Screen name=\"signup\" options={{ title:\"\", headerBackTitle:\"\",headerShadowVisible:false,headerStyle:{backgroundColor:Colors.background},\n           headerLeft:()=>(\n           <TouchableOpacity onPress={() => router.back()} style={{padding:10}}>\n@@ -69,9 +69,9 @@\n           </TouchableOpacity>\n              </Link>)\n         }} />\n         \n-      </Slot>\n+      </Stack>\n }\n \n function RootLayoutNav() {\n \n"
+                },
+                {
+                    "date": 1755278213565,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,8 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"modal\"}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1755500216334,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"modal\"}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"transparentModal\"}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1755500240637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"transparentModal\"}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"containedTransparentModal\"}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1755500255041,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"containedTransparentModal\"}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"modal\"}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1756188176175,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:\"modal\"}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n         \n       </Stack>\n }\n \n"
+                },
+                {
+                    "date": 1756189410537,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -68,9 +68,9 @@\n               <Ionicons name=\"help-circle-outline\" size={34} color={Colors.primary} />\n           </TouchableOpacity>\n              </Link>)\n         }} />\n-        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modal'}}/>\n+        <Stack.Screen name=\"help\" options={{ title:\"Help\",presentation:'modalsssssssss'}}/>\n         \n       </Stack>\n }\n \n"
+                }
+            ],
+            "date": 1753859427395,
+            "name": "Commit-0",
+            "content": "import FontAwesome from '@expo/vector-icons/FontAwesome';\nimport { DarkTheme, DefaultTheme, ThemeProvider } from '@react-navigation/native';\nimport { useFonts } from 'expo-font';\nimport { Stack } from 'expo-router';\nimport * as SplashScreen from 'expo-splash-screen';\nimport { useEffect } from 'react';\nimport React = require('react');\nimport 'react-native-reanimated';\n\n\n\n\nexport {\n  // Catch any errors thrown by the Layout component.\n  ErrorBoundary,\n} from 'expo-router';\n\nexport const unstable_settings = {\n  // Ensure that reloading on `/modal` keeps a back button present.\n  initialRouteName: '(tabs)',\n};\n\n// Prevent the splash screen from auto-hiding before asset loading is complete.\nSplashScreen.preventAutoHideAsync();\n\nexport default function RootLayout() {\n  const [loaded, error] = useFonts({\n    SpaceMono: require('../assets/fonts/SpaceMono-Regular.ttf'),\n    ...FontAwesome.font,\n  });\n\n  // Expo Router uses Error Boundaries to catch errors in the navigation tree.\n  useEffect(() => {\n    if (error) throw error;\n  }, [error]);\n\n  useEffect(() => {\n    if (loaded) {\n      SplashScreen.hideAsync();\n    }\n  }, [loaded]);\n\n  if (!loaded) {\n    return null;\n  }\n\n  return <RootLayoutNav />;\n}\n\nfunction RootLayoutNav() {\n\n\n  return (\n    <ThemeProvider value={colorScheme === 'dark' ? DarkTheme : DefaultTheme}>\n      <Stack>\n        <Stack.Screen name=\"(tabs)\" options={{ headerShown: false }} />\n        <Stack.Screen name=\"modal\" options={{ presentation: 'modal' }} />\n      </Stack>\n    </ThemeProvider>\n  );\n}\n"
+        }
+    ]
+}

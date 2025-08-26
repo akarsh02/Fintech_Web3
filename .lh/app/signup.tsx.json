@@ -1,0 +1,154 @@
+{
+    "sourceFile": "app/signup.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 34,
+            "patches": [
+                {
+                    "date": 1753865959790,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753871176026,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,13 @@\n+import { View, Text } from 'react-native'\n+import React from 'react'\n+import { defaultStyles } from '@/constants/Styles'\n+\n+const SignUpScreen = () => {\n+  return (\n+    <View style={defaultStyles.container}>\n+      <Text style={defaultStyles.header}>Let's get started!</Text>\n+    </View>\n+  )\n+}\n+\n+export default SignUpScreen\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753871266297,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,20 +5,10 @@\n const SignUpScreen = () => {\n   return (\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n-    </View>\n-  )\n-}\n+      <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n \n-export default SignUpScreen\n-import { View, Text } from 'react-native'\n-import React from 'react'\n-\n-const SignUpScreen = () => {\n-  return (\n-    <View>\n-      <Text>SignUpScreen</Text>\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753880238416,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,13 +1,16 @@\n-import { View, Text } from 'react-native'\n+import { View, Text, TextInput } from 'react-native'\n import React from 'react'\n import { defaultStyles } from '@/constants/Styles'\n \n const SignUpScreen = () => {\n   return (\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n+      <View>\n+         <TextInput placeholder='Phone Number' keyboardType='numeric' />\n+      </View>\n \n     </View>\n   )\n }\n"
+                },
+                {
+                    "date": 1753880340360,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -6,13 +6,20 @@\n   return (\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n-      <View>\n-         <TextInput placeholder='Phone Number' keyboardType='numeric' />\n+      <View style={styles.textInput}>\n+         <TextInput style={defaultStyles.input} placeholder='Phone Number' keyboardType='numeric' />\n       </View>\n \n     </View>\n   )\n }\n\\ No newline at end of file\n \n-export default SignUpScreen\n+export default SignUpScreen\n+\n+const styles = StyleSheet.create({\n+ textInput:{\n+  flexdirection:\"row\",\n+  marginVertical:40\n+ }\n+})\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753880358709,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { View, Text, TextInput } from 'react-native'\n+import { View, Text, TextInput,StyleSheet } from 'react-native'\n import React from 'react'\n import { defaultStyles } from '@/constants/Styles'\n \n const SignUpScreen = () => {\n"
+                },
+                {
+                    "date": 1753880375690,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n-         <TextInput style={defaultStyles.input} placeholder='Phone Number' keyboardType='numeric' />\n+         <TextInput style={styles.input} placeholder='Phone Number' keyboardType='numeric' />\n       </View>\n \n     </View>\n   )\n@@ -20,6 +20,13 @@\n const styles = StyleSheet.create({\n  textInput:{\n   flexdirection:\"row\",\n   marginVertical:40\n+ },\n+ input:{\n+  flex:1,\n+  borderWidth:1,\n+  padding:10,\n+  borderRadius:30,\n+  marginRight:10\n  }\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753880388093,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -23,9 +23,9 @@\n   marginVertical:40\n  },\n  input:{\n   flex:1,\n-  borderWidth:1,\n+\n   padding:10,\n   borderRadius:30,\n   marginRight:10\n  }\n"
+                },
+                {
+                    "date": 1753880653252,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,14 +18,14 @@\n export default SignUpScreen\n \n const styles = StyleSheet.create({\n  textInput:{\n-  flexdirection:\"row\",\n+  flexDirection:\"row\",\n   marginVertical:40\n  },\n  input:{\n   flex:1,\n-\n+  borderWidth:1,\n   padding:10,\n   borderRadius:30,\n   marginRight:10\n  }\n"
+                },
+                {
+                    "date": 1753880833702,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,16 @@\n import { View, Text, TextInput,StyleSheet } from 'react-native'\n import React from 'react'\n import { defaultStyles } from '@/constants/Styles'\n+import Colors from '@/constants/Colors'\n \n const SignUpScreen = () => {\n   return (\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n+         <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n          <TextInput style={styles.input} placeholder='Phone Number' keyboardType='numeric' />\n       </View>\n \n     </View>\n"
+                },
+                {
+                    "date": 1753881049046,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,8 +27,8 @@\n  input:{\n   flex:1,\n   borderWidth:1,\n   padding:10,\n-  borderRadius:30,\n+  borderRadius:16,\n   marginRight:10\n  }\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753881067747,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -26,9 +26,9 @@\n  },\n  input:{\n   flex:1,\n   borderWidth:1,\n-  padding:10,\n+  padding:20,\n   borderRadius:16,\n   marginRight:10\n  }\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753881080552,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,8 @@\n   flexDirection:\"row\",\n   marginVertical:40\n  },\n  input:{\n-  flex:1,\n   borderWidth:1,\n   padding:20,\n   borderRadius:16,\n   marginRight:10\n"
+                },
+                {
+                    "date": 1753881119454,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,7 +27,8 @@\n  input:{\n   borderWidth:1,\n   padding:20,\n   borderRadius:16,\n-  marginRight:10\n+  marginRight:10,\n+  backgroundColor:Colors.lightGray\n  }\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753881140836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,7 +28,8 @@\n   borderWidth:1,\n   padding:20,\n   borderRadius:16,\n   marginRight:10,\n+  fontSize:20,\n   backgroundColor:Colors.lightGray\n  }\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753881170718,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,9 +24,8 @@\n   flexDirection:\"row\",\n   marginVertical:40\n  },\n  input:{\n-  borderWidth:1,\n   padding:20,\n   borderRadius:16,\n   marginRight:10,\n   fontSize:20,\n"
+                },
+                {
+                    "date": 1753881177473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -24,8 +24,9 @@\n   flexDirection:\"row\",\n   marginVertical:40\n  },\n  input:{\n+  borderWidth:1,\n   padding:20,\n   borderRadius:16,\n   marginRight:10,\n   fontSize:20,\n"
+                },
+                {
+                    "date": 1753881212527,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -29,7 +29,7 @@\n   padding:20,\n   borderRadius:16,\n   marginRight:10,\n   fontSize:20,\n-  backgroundColor:Colors.lightGray\n+  // backgroundColor:Colors.lightGray\n  }\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753881270382,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n-         <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n+         <TextInput style={styles.input} placeholder='Country Code'  value={'+91'} />\n          <TextInput style={styles.input} placeholder='Phone Number' keyboardType='numeric' />\n       </View>\n \n     </View>\n@@ -29,7 +29,7 @@\n   padding:20,\n   borderRadius:16,\n   marginRight:10,\n   fontSize:20,\n-  // backgroundColor:Colors.lightGray\n+  backgroundColor:Colors.lightGray\n  }\n })\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753881348033,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,12 +5,12 @@\n \n const SignUpScreen = () => {\n   return (\n     <View style={defaultStyles.container}>\n-      <Text style={defaultStyles.header}>Let's get started!</Text>\n+      <Text style={}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n-         <TextInput style={styles.input} placeholder='Country Code'  value={'+91'} />\n+         <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n          <TextInput style={styles.input} placeholder='Phone Number' keyboardType='numeric' />\n       </View>\n \n     </View>\n"
+                },
+                {
+                    "date": 1753881355970,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -5,9 +5,9 @@\n \n const SignUpScreen = () => {\n   return (\n     <View style={defaultStyles.container}>\n-      <Text style={}>Let's get started!</Text>\n+      <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n          <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n          <TextInput style={styles.input} placeholder='Phone Number' keyboardType='numeric' />\n"
+                },
+                {
+                    "date": 1753881364736,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import Colors from '@/constants/Colors'\n \n const SignUpScreen = () => {\n   return (\n-    <View style={defaultStyles.container}>\n+    <View style={'r'}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n          <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n"
+                },
+                {
+                    "date": 1753881372130,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import Colors from '@/constants/Colors'\n \n const SignUpScreen = () => {\n   return (\n-    <View style={'r'}>\n+    <View >\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n          <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n"
+                },
+                {
+                    "date": 1753881393992,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import Colors from '@/constants/Colors'\n \n const SignUpScreen = () => {\n   return (\n-    <View >\n+    <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n          <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n"
+                },
+                {
+                    "date": 1753881504434,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,9 +9,9 @@\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n          <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n-         <TextInput style={styles.input} placeholder='Phone Number' keyboardType='numeric' />\n+         <TextInput style={[styles.input,{flex:1}]} placeholder='Phone Number' keyboardType='numeric' />\n       </View>\n \n     </View>\n   )\n"
+                },
+                {
+                    "date": 1753882844757,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,14 +3,15 @@\n import { defaultStyles } from '@/constants/Styles'\n import Colors from '@/constants/Colors'\n \n const SignUpScreen = () => {\n+ const [countryCode,setCountryCode] = React.useState('+91')\n   return (\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n-         <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={'+91'} />\n+         <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={countryCode} />\n          <TextInput style={[styles.input,{flex:1}]} placeholder='Phone Number' keyboardType='numeric' />\n       </View>\n \n     </View>\n"
+                },
+                {
+                    "date": 1753882926375,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,15 +4,16 @@\n import Colors from '@/constants/Colors'\n \n const SignUpScreen = () => {\n  const [countryCode,setCountryCode] = React.useState('+91')\n+ const [phoneNumber,setPhoneNumber] = React.useState('')\n   return (\n     <View style={defaultStyles.container}>\n       <Text style={defaultStyles.header}>Let's get started!</Text>\n       <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n       <View style={styles.textInput}>\n          <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={countryCode} />\n-         <TextInput style={[styles.input,{flex:1}]} placeholder='Phone Number' keyboardType='numeric' />\n+         <TextInput style={[styles.input,{flex:1}]} placeholder='Phone Number' keyboardType='numeric' value={phoneNumber} onChange={setPhoneNumber} />\n       </View>\n \n     </View>\n   )\n"
+                },
+                {
+                    "date": 1753883117200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n-import { View, Text, TextInput,StyleSheet } from 'react-native'\n+import { View, Text, TextInput,StyleSheet, TouchableOpacity } from 'react-native'\n import React from 'react'\n import { defaultStyles } from '@/constants/Styles'\n import Colors from '@/constants/Colors'\n+import { Link } from 'expo-router'\n \n const SignUpScreen = () => {\n  const [countryCode,setCountryCode] = React.useState('+91')\n  const [phoneNumber,setPhoneNumber] = React.useState('')\n@@ -13,9 +14,16 @@\n       <View style={styles.textInput}>\n          <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={countryCode} />\n          <TextInput style={[styles.input,{flex:1}]} placeholder='Phone Number' keyboardType='numeric' value={phoneNumber} onChange={setPhoneNumber} />\n       </View>\n-\n+      <Link href={'/login'} asChild>\n+        <TouchableOpacity>\n+          <Text style={defaultStyles.textLink}>Already have an account? Login</Text>\n+        </TouchableOpacity>\n+      </Link>\n+      <TouchableOpacity>\n+          <Text style={[defaultStyles.pillButton,{marginTop:40}]}>Sign In</Text>\n+        </TouchableOpacity>\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753945248141,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <Text style={defaultStyles.textLink}>Already have an account? Login</Text>\n         </TouchableOpacity>\n       </Link>\n       <TouchableOpacity>\n-          <Text style={[defaultStyles.pillButton,{marginTop:40}]}>Sign In</Text>\n+          <Text style={[defaultStyles.pillButton,{marginTop:20}]}>Sign In</Text>\n         </TouchableOpacity>\n     </View>\n   )\n }\n"
+                },
+                {
+                    "date": 1753945311785,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n           <Text style={defaultStyles.textLink}>Already have an account? Login</Text>\n         </TouchableOpacity>\n       </Link>\n       <TouchableOpacity>\n-          <Text style={[defaultStyles.pillButton,{marginTop:20}]}>Sign In</Text>\n+          <Text style={[defaultStyles.pillButton,{marginTop:20}]}>Sign Up</Text>\n         </TouchableOpacity>\n     </View>\n   )\n }\n"
+                },
+                {
+                    "date": 1753945501220,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,45 +1,104 @@\n-import { View, Text, TextInput,StyleSheet, TouchableOpacity } from 'react-native'\n-import React from 'react'\n-import { defaultStyles } from '@/constants/Styles'\n-import Colors from '@/constants/Colors'\n-import { Link } from 'expo-router'\n+import Colors from '@/constants/Colors';\n+import { defaultStyles } from '@/constants/Styles';\n+import { useSignUp } from '@clerk/clerk-expo';\n+import { Link, useRouter } from 'expo-router';\n+import { useState } from 'react';\n+import {\n+  View,\n+  Text,\n+  StyleSheet,\n+  TextInput,\n+  TouchableOpacity,\n+  KeyboardAvoidingView,\n+  Platform,\n+} from 'react-native';\n+const Page = () => {\n+  const [countryCode, setCountryCode] = useState('+49');\n+  const [phoneNumber, setPhoneNumber] = useState('');\n+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;\n+  const router = useRouter();\n+  const { signUp } = useSignUp();\n \n-const SignUpScreen = () => {\n- const [countryCode,setCountryCode] = React.useState('+91')\n- const [phoneNumber,setPhoneNumber] = React.useState('')\n+  const onSignup = async () => {\n+    const fullPhoneNumber = `${countryCode}${phoneNumber}`;\n+\n+    try {\n+      await signUp!.create({\n+        phoneNumber: fullPhoneNumber,\n+      });\n+      signUp!.preparePhoneNumberVerification();\n+\n+      router.push({ pathname: '/verify/[phone]', params: { phone: fullPhoneNumber } });\n+    } catch (error) {\n+      console.error('Error signing up:', error);\n+    }\n+  };\n+\n   return (\n\\ No newline at end of file\n-    <View style={defaultStyles.container}>\n-      <Text style={defaultStyles.header}>Let's get started!</Text>\n-      <Text style={defaultStyles.descriptionText}>Enter your phone number we will send a verification code</Text>\n-      <View style={styles.textInput}>\n-         <TextInput style={styles.input} placeholder='Country Code' placeholderTextColor={Colors.gray} value={countryCode} />\n-         <TextInput style={[styles.input,{flex:1}]} placeholder='Phone Number' keyboardType='numeric' value={phoneNumber} onChange={setPhoneNumber} />\n-      </View>\n-      <Link href={'/login'} asChild>\n-        <TouchableOpacity>\n-          <Text style={defaultStyles.textLink}>Already have an account? Login</Text>\n-        </TouchableOpacity>\n-      </Link>\n-      <TouchableOpacity>\n-          <Text style={[defaultStyles.pillButton,{marginTop:20}]}>Sign Up</Text>\n-        </TouchableOpacity>\n-    </View>\n-  )\n-}\n+    <KeyboardAvoidingView\n+      style={{ flex: 1 }}\n+      behavior=\"padding\"\n+      keyboardVerticalOffset={keyboardVerticalOffset}>\n+      <View style={defaultStyles.container}>\n+        <Text style={defaultStyles.header}>Let's get started!</Text>\n+        <Text style={defaultStyles.descriptionText}>\n+          Enter your phone number. We will send you a confirmation code there\n+        </Text>\n+        <View style={styles.inputContainer}>\n+          <TextInput\n+            style={styles.input}\n+            placeholder=\"Country code\"\n+            placeholderTextColor={Colors.gray}\n+            value={countryCode}\n+          />\n+          <TextInput\n+            style={[styles.input, { flex: 1 }]}\n+            placeholder=\"Mobile number\"\n+            placeholderTextColor={Colors.gray}\n+            keyboardType=\"numeric\"\n+            value={phoneNumber}\n+            onChangeText={setPhoneNumber}\n+          />\n+        </View>\n \n-export default SignUpScreen\n+        <Link href={'/login'} replace asChild>\n+          <TouchableOpacity>\n+            <Text style={defaultStyles.textLink}>Already have an account? Log in</Text>\n+          </TouchableOpacity>\n+        </Link>\n \n+        <View style={{ flex: 1 }} />\n+\n+        <TouchableOpacity\n+          style={[\n+            defaultStyles.pillButton,\n+            phoneNumber !== '' ? styles.enabled : styles.disabled,\n+            { marginBottom: 20 },\n+          ]}\n+          onPress={onSignup}>\n+          <Text style={defaultStyles.buttonText}>Sign up</Text>\n+        </TouchableOpacity>\n+      </View>\n+    </KeyboardAvoidingView>\n+  );\n+};\n const styles = StyleSheet.create({\n- textInput:{\n-  flexDirection:\"row\",\n-  marginVertical:40\n- },\n- input:{\n-  borderWidth:1,\n-  padding:20,\n-  borderRadius:16,\n-  marginRight:10,\n-  fontSize:20,\n-  backgroundColor:Colors.lightGray\n- }\n-})\n+  inputContainer: {\n+    marginVertical: 40,\n+    flexDirection: 'row',\n+  },\n+  input: {\n+    backgroundColor: Colors.lightGray,\n+    padding: 20,\n+    borderRadius: 16,\n+    fontSize: 20,\n+    marginRight: 10,\n+  },\n+  enabled: {\n+    backgroundColor: Colors.primary,\n+  },\n+  disabled: {\n+    backgroundColor: Colors.primaryMuted,\n+  },\n+});\n+export default Page;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753945517443,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -11,9 +11,9 @@\n   TouchableOpacity,\n   KeyboardAvoidingView,\n   Platform,\n } from 'react-native';\n-const Page = () => {\n+const SignUpScreen = () => {\n   const [countryCode, setCountryCode] = useState('+49');\n   const [phoneNumber, setPhoneNumber] = useState('');\n   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;\n   const router = useRouter();\n@@ -100,5 +100,5 @@\n   disabled: {\n     backgroundColor: Colors.primaryMuted,\n   },\n });\n-export default Page;\n\\ No newline at end of file\n+export default SignUpScreen;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753945544239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,7 +1,7 @@\n import Colors from '@/constants/Colors';\n import { defaultStyles } from '@/constants/Styles';\n-import { useSignUp } from '@clerk/clerk-expo';\n+// import { useSignUp } from '@clerk/clerk-expo';\n import { Link, useRouter } from 'expo-router';\n import { useState } from 'react';\n import {\n   View,\n@@ -16,24 +16,24 @@\n   const [countryCode, setCountryCode] = useState('+49');\n   const [phoneNumber, setPhoneNumber] = useState('');\n   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;\n   const router = useRouter();\n-  const { signUp } = useSignUp();\n+  // const { signUp } = useSignUp();\n \n-  const onSignup = async () => {\n-    const fullPhoneNumber = `${countryCode}${phoneNumber}`;\n+  // const onSignup = async () => {\n+  //   const fullPhoneNumber = `${countryCode}${phoneNumber}`;\n \n-    try {\n-      await signUp!.create({\n-        phoneNumber: fullPhoneNumber,\n-      });\n-      signUp!.preparePhoneNumberVerification();\n+  //   try {\n+  //     await signUp!.create({\n+  //       phoneNumber: fullPhoneNumber,\n+  //     });\n+  //     signUp!.preparePhoneNumberVerification();\n \n-      router.push({ pathname: '/verify/[phone]', params: { phone: fullPhoneNumber } });\n-    } catch (error) {\n-      console.error('Error signing up:', error);\n-    }\n-  };\n+  //     router.push({ pathname: '/verify/[phone]', params: { phone: fullPhoneNumber } });\n+  //   } catch (error) {\n+  //     console.error('Error signing up:', error);\n+  //   }\n+  // };\n \n   return (\n     <KeyboardAvoidingView\n       style={{ flex: 1 }}\n"
+                },
+                {
+                    "date": 1753945560429,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -74,9 +74,9 @@\n             defaultStyles.pillButton,\n             phoneNumber !== '' ? styles.enabled : styles.disabled,\n             { marginBottom: 20 },\n           ]}\n-          onPress={onSignup}>\n+          onPress={'onSignup'}>\n           <Text style={defaultStyles.buttonText}>Sign up</Text>\n         </TouchableOpacity>\n       </View>\n     </KeyboardAvoidingView>\n"
+                },
+                {
+                    "date": 1753945778239,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n } from 'react-native';\n const SignUpScreen = () => {\n   const [countryCode, setCountryCode] = useState('+49');\n   const [phoneNumber, setPhoneNumber] = useState('');\n-  const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 0;\n+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 80;\n   const router = useRouter();\n   // const { signUp } = useSignUp();\n \n   // const onSignup = async () => {\n"
+                }
+            ],
+            "date": 1753865959790,
+            "name": "Commit-0",
+            "content": "import { View, Text } from 'react-native'\nimport React from 'react'\n\nconst SignUpScreen = () => {\n  return (\n    <View>\n      <Text>SignUpScreen</Text>\n    </View>\n  )\n}\n\nexport default SignUpScreen"
+        }
+    ]
+}

@@ -1,0 +1,50 @@
+{
+    "sourceFile": "app/login.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 8,
+            "patches": [
+                {
+                    "date": 1753865919800,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1754652868158,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,12 +1,104 @@\n-import { View, Text } from 'react-native'\n-import React from 'react'\n+import Colors from '@/constants/Colors';\n+import { defaultStyles } from '@/constants/Styles';\n+// import { useSignUp } from '@clerk/clerk-expo';\n+import { Link, useRouter } from 'expo-router';\n+import { useState } from 'react';\n+import {\n+  View,\n+  Text,\n+  StyleSheet,\n+  TextInput,\n\\ No newline at end of file\n+  TouchableOpacity,\n+  KeyboardAvoidingView,\n+  Platform,\n+} from 'react-native';\n+const LoginScreen = () => {\n+  const [countryCode, setCountryCode] = useState('+49');\n+  const [phoneNumber, setPhoneNumber] = useState('');\n+  const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 80;\n+  const router = useRouter();\n+  // const { signUp } = useSignUp();\n \n-const Login = () => {\n+  // const onSignup = async () => {\n+  //   const fullPhoneNumber = `${countryCode}${phoneNumber}`;\n+\n+  //   try {\n+  //     await signUp!.create({\n+  //       phoneNumber: fullPhoneNumber,\n+  //     });\n+  //     signUp!.preparePhoneNumberVerification();\n+\n+  //     router.push({ pathname: '/verify/[phone]', params: { phone: fullPhoneNumber } });\n+  //   } catch (error) {\n+  //     console.error('Error signing up:', error);\n+  //   }\n+  // };\n+\n   return (\n-    <View>\n-      <Text>Login</Text>\n-    </View>\n-  )\n-}\n+    <KeyboardAvoidingView\n+      style={{ flex: 1 }}\n+      behavior=\"padding\"\n+      keyboardVerticalOffset={keyboardVerticalOffset}>\n+      <View style={defaultStyles.container}>\n+        <Text style={defaultStyles.header}>Let's get started!</Text>\n+        <Text style={defaultStyles.descriptionText}>\n+          Enter your phone number. We will send you a confirmation code there\n+        </Text>\n+        <View style={styles.inputContainer}>\n+          <TextInput\n+            style={styles.input}\n+            placeholder=\"Country code\"\n+            placeholderTextColor={Colors.gray}\n+            value={countryCode}\n+          />\n+          <TextInput\n+            style={[styles.input, { flex: 1 }]}\n+            placeholder=\"Mobile number\"\n+            placeholderTextColor={Colors.gray}\n+            keyboardType=\"numeric\"\n+            value={phoneNumber}\n+            onChangeText={setPhoneNumber}\n+          />\n+        </View>\n \n-export default Login\n+        <Link href={'/login'} replace asChild>\n+          <TouchableOpacity>\n+            <Text style={defaultStyles.textLink}>Already have an account? Log in</Text>\n+          </TouchableOpacity>\n+        </Link>\n+\n+        <View style={{ flex: 1 }} />\n+\n+        <TouchableOpacity\n+          style={[\n+            defaultStyles.pillButton,\n+            phoneNumber !== '' ? styles.enabled : styles.disabled,\n+            { marginBottom: 20 },\n+          ]}\n+          onPress={'onSignup'}>\n+          <Text style={defaultStyles.buttonText}>Sign up</Text>\n+        </TouchableOpacity>\n+      </View>\n+    </KeyboardAvoidingView>\n+  );\n+};\n+const styles = StyleSheet.create({\n+  inputContainer: {\n+    marginVertical: 40,\n+    flexDirection: 'row',\n+  },\n+  input: {\n+    backgroundColor: Colors.lightGray,\n+    padding: 20,\n+    borderRadius: 16,\n+    fontSize: 20,\n+    marginRight: 10,\n+  },\n+  enabled: {\n+    backgroundColor: Colors.primary,\n+  },\n+  disabled: {\n+    backgroundColor: Colors.primaryMuted,\n+  },\n+});\n+export default LoginScreen;\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1755579383863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -39,9 +39,9 @@\n       style={{ flex: 1 }}\n       behavior=\"padding\"\n       keyboardVerticalOffset={keyboardVerticalOffset}>\n       <View style={defaultStyles.container}>\n-        <Text style={defaultStyles.header}>Let's get started!</Text>\n+        <Text style={defaultStyles.header}>Welcome Back</Text>\n         <Text style={defaultStyles.descriptionText}>\n           Enter your phone number. We will send you a confirmation code there\n         </Text>\n         <View style={styles.inputContainer}>\n"
+                },
+                {
+                    "date": 1755579432196,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,23 +18,12 @@\n   const keyboardVerticalOffset = Platform.OS === 'ios' ? 80 : 80;\n   const router = useRouter();\n   // const { signUp } = useSignUp();\n \n-  // const onSignup = async () => {\n-  //   const fullPhoneNumber = `${countryCode}${phoneNumber}`;\n+  const onSignIn = async () => {\n+   \n+  };\n \n-  //   try {\n-  //     await signUp!.create({\n-  //       phoneNumber: fullPhoneNumber,\n-  //     });\n-  //     signUp!.preparePhoneNumberVerification();\n-\n-  //     router.push({ pathname: '/verify/[phone]', params: { phone: fullPhoneNumber } });\n-  //   } catch (error) {\n-  //     console.error('Error signing up:', error);\n-  //   }\n-  // };\n-\n   return (\n     <KeyboardAvoidingView\n       style={{ flex: 1 }}\n       behavior=\"padding\"\n"
+                },
+                {
+                    "date": 1755579459393,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -63,9 +63,9 @@\n             defaultStyles.pillButton,\n             phoneNumber !== '' ? styles.enabled : styles.disabled,\n             { marginBottom: 20 },\n           ]}\n-          onPress={'onSignup'}>\n+          onPress={onSignIn}>\n           <Text style={defaultStyles.buttonText}>Sign up</Text>\n         </TouchableOpacity>\n       </View>\n     </KeyboardAvoidingView>\n"
+                },
+                {
+                    "date": 1755579480324,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -64,9 +64,9 @@\n             phoneNumber !== '' ? styles.enabled : styles.disabled,\n             { marginBottom: 20 },\n           ]}\n           onPress={onSignIn}>\n-          <Text style={defaultStyles.buttonText}>Sign up</Text>\n+          <Text style={defaultStyles.buttonText}>Continue</Text>\n         </TouchableOpacity>\n       </View>\n     </KeyboardAvoidingView>\n   );\n"
+                },
+                {
+                    "date": 1755579600168,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -49,14 +49,8 @@\n             onChangeText={setPhoneNumber}\n           />\n         </View>\n \n-        <Link href={'/login'} replace asChild>\n-          <TouchableOpacity>\n-            <Text style={defaultStyles.textLink}>Already have an account? Log in</Text>\n-          </TouchableOpacity>\n-        </Link>\n-\n         <View style={{ flex: 1 }} />\n \n         <TouchableOpacity\n           style={[\n@@ -64,10 +58,9 @@\n             phoneNumber !== '' ? styles.enabled : styles.disabled,\n             { marginBottom: 20 },\n           ]}\n           onPress={onSignIn}>\n-          <Text style={defaultStyles.buttonText}>Continue</Text>\n-        </TouchableOpacity>\n+         </TouchableOpacity>\n       </View>\n     </KeyboardAvoidingView>\n   );\n };\n"
+                },
+                {
+                    "date": 1756188310439,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,9 +57,9 @@\n             defaultStyles.pillButton,\n             phoneNumber !== '' ? styles.enabled : styles.disabled,\n             { marginBottom: 20 },\n           ]}\n-          onPress={onSignIn}>\n+          onPress={onSignIn}> Continue\n          </TouchableOpacity>\n       </View>\n     </KeyboardAvoidingView>\n   );\n"
+                },
+                {
+                    "date": 1756188356836,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -57,9 +57,9 @@\n             defaultStyles.pillButton,\n             phoneNumber !== '' ? styles.enabled : styles.disabled,\n             { marginBottom: 20 },\n           ]}\n-          onPress={onSignIn}> Continue\n+          onPress={onSignIn}> <Text> Continue </Text>\n          </TouchableOpacity>\n       </View>\n     </KeyboardAvoidingView>\n   );\n"
+                }
+            ],
+            "date": 1753865919800,
+            "name": "Commit-0",
+            "content": "import { View, Text } from 'react-native'\nimport React from 'react'\n\nconst Login = () => {\n  return (\n    <View>\n      <Text>Login</Text>\n    </View>\n  )\n}\n\nexport default Login"
+        }
+    ]
+}

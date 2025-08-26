@@ -1,0 +1,298 @@
+{
+    "sourceFile": "app/index.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 70,
+            "patches": [
+                {
+                    "date": 1753859898202,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                },
+                {
+                    "date": 1753865422958,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n \n const Page = () => {\n   return (\n     <View>\n-      <Text>Page</Text>\n+      <Text>fkjnufuh</Text>\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753866283878,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,10 @@\n import { View, Text } from 'react-native'\n import React from 'react'\n+import { useAssets } from 'expo-asset'\n \n const Page = () => {\n+ const [assets] = useAssets('@/assets/videos/intro.mp4')\n   return (\n     <View>\n       <Text>fkjnufuh</Text>\n     </View>\n"
+                },
+                {
+                    "date": 1753866292473,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n import { useAssets } from 'expo-asset'\n \n const Page = () => {\n  const [assets] = useAssets('@/assets/videos/intro.mp4')\n+ console.log(assets)\n   return (\n     <View>\n       <Text>fkjnufuh</Text>\n     </View>\n"
+                },
+                {
+                    "date": 1753866351832,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -2,9 +2,9 @@\n import React from 'react'\n import { useAssets } from 'expo-asset'\n \n const Page = () => {\n- const [assets] = useAssets('@/assets/videos/intro.mp4')\n+ const [assets] = useAssets([require('../assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n     <View>\n       <Text>fkjnufuh</Text>\n"
+                },
+                {
+                    "date": 1753866465048,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { View, Text } from 'react-native'\n+import { View, Text,StyleSheet } from 'react-native'\n import React from 'react'\n import { useAssets } from 'expo-asset'\n \n const Page = () => {\n@@ -11,5 +11,12 @@\n     </View>\n   )\n }\n \n+const styles = StyleSheet.create({\n+ container:{\n+  flex:1,\n+  justifyContent:'center'\n+ }\n+})\n+\n export default Page\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753866575556,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,14 +1,15 @@\n import { View, Text,StyleSheet } from 'react-native'\n import React from 'react'\n import { useAssets } from 'expo-asset'\n+import { Video } from 'expo-av'\n \n const Page = () => {\n  const [assets] = useAssets([require('../assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n-    <View>\n-      <Text>fkjnufuh</Text>\n+    <View style={styles.container}>\n+       <Video source={{uri:assets[0].uri}} style={{ width: '100%', height: '100%'}}/>\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753866606202,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n  const [assets] = useAssets([require('../assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-       <Video source={{uri:assets[0].uri}} style={{ width: '100%', height: '100%'}}/>\n+       <Video source={{uri:assets[0].uri}} style={{ width: '300', height: '300'}}/>\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753866638465,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n  const [assets] = useAssets([require('../assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-       <Video source={{uri:assets[0].uri}} style={{ width: '300', height: '300'}}/>\n+       <Video source={{uri:assets[0].uri}} style={{ width: 300, height: 300}}/>\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753866680329,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n  const [assets] = useAssets([require('../assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-       <Video source={{uri:assets[0].uri}} style={{ width: 300, height: 300}}/>\n+      {assets &&  <Video source={{uri:assets[0].uri}} style={{ width: 300, height: 300}}/>}\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753866748397,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,9 +3,9 @@\n import { useAssets } from 'expo-asset'\n import { Video } from 'expo-av'\n \n const Page = () => {\n- const [assets] = useAssets([require('../assets/videos/intro.mp4')])\n+ const [assets] = useAssets([require('@/assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n       {assets &&  <Video source={{uri:assets[0].uri}} style={{ width: 300, height: 300}}/>}\n"
+                },
+                {
+                    "date": 1753866834414,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -16,8 +16,12 @@\n const styles = StyleSheet.create({\n  container:{\n   flex:1,\n   justifyContent:'center'\n+ },\n+ video:{\n+  width:\"100%\",\n+  height:\"100%\"\n  }\n })\n \n export default Page\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753866859279,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n  const [assets] = useAssets([require('@/assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-      {assets &&  <Video source={{uri:assets[0].uri}} style={{ width: 300, height: 300}}/>}\n+      {assets &&  <Video source={{uri:assets[0].uri}} style={ styles.video}/>}\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753866871352,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,10 @@\n   justifyContent:'center'\n  },\n  video:{\n   width:\"100%\",\n-  height:\"100%\"\n+  height:\"100%\",\n+  position:\"absolute\"\n  }\n })\n \n export default Page\n\\ No newline at end of file\n"
+                },
+                {
+                    "date": 1753866892847,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -7,9 +7,9 @@\n  const [assets] = useAssets([require('@/assets/videos/intro.mp4')])\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-      {assets &&  <Video source={{uri:assets[0].uri}} style={ styles.video}/>}\n+      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ styles.video}/>}\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753866951183,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,11 +1,12 @@\n-import { View, Text,StyleSheet } from 'react-native'\n+import { View, Text,StyleSheet, useWindowDimensions } from 'react-native'\n import React from 'react'\n import { useAssets } from 'expo-asset'\n import { Video } from 'expo-av'\n \n const Page = () => {\n  const [assets] = useAssets([require('@/assets/videos/intro.mp4')])\n+ const width  = useWindowDimensions().width\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n       {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ styles.video}/>}\n"
+                },
+                {
+                    "date": 1753866971345,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n   flex:1,\n   justifyContent:'center'\n  },\n  video:{\n-  width:\"100%\",\n+  width:width,\n   height:\"100%\",\n   position:\"absolute\"\n  }\n })\n"
+                },
+                {
+                    "date": 1753867035637,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Video } from 'expo-av'\n \n const Page = () => {\n  const [assets] = useAssets([require('@/assets/videos/intro.mp4')])\n- const width  = useWindowDimensions().width\n+ const {width, height}  = useWindowDimensions().width\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n       {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ styles.video}/>}\n@@ -19,10 +19,8 @@\n   flex:1,\n   justifyContent:'center'\n  },\n  video:{\n-  width:width,\n-  height:\"100%\",\n   position:\"absolute\"\n  }\n })\n \n"
+                },
+                {
+                    "date": 1753867047948,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n  const {width, height}  = useWindowDimensions().width\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ styles.video}/>}\n+      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ {width, height} as any} resizeMode=\"cover\" style={ styles.video}/>}\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753867146532,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n  const {width, height}  = useWindowDimensions().width\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ {width, height} as any} resizeMode=\"cover\" style={ styles.video}/>}\n+      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ {width:width, height:height,resizeMode:\"cover\"}}/>}\n     </View>\n   )\n }\n \n@@ -19,8 +19,9 @@\n   flex:1,\n   justifyContent:'center'\n  },\n  video:{\n+ \n   position:\"absolute\"\n  }\n })\n \n"
+                },
+                {
+                    "date": 1753867165469,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -8,9 +8,9 @@\n  const {width, height}  = useWindowDimensions().width\n  console.log(assets)\n   return (\n     <View style={styles.container}>\n-      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ {width:width, height:height,resizeMode:\"cover\"}}/>}\n+      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ {width:width, height:height}}/>}\n     </View>\n   )\n }\n \n"
+                },
+                {
+                    "date": 1753867208616,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,28 +1,33 @@\n-import { View, Text,StyleSheet, useWindowDimensions } from 'react-native'\n-import React from 'react'\n-import { useAssets } from 'expo-asset'\n-import { Video } from 'expo-av'\n+import { View, StyleSheet, useWindowDimensions } from 'react-native';\n+import React from 'react';\n+import { useAssets } from 'expo-asset';\n+import { Video } from 'expo-av';\n \n const Page = () => {\n- const [assets] = useAssets([require('@/assets/videos/intro.mp4')])\n- const {width, height}  = useWindowDimensions().width\n- console.log(assets)\n+  const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n+  const { width, height } = useWindowDimensions();\n+\n   return (\n     <View style={styles.container}>\n-      {assets &&  <Video isLooping isMuted shouldPlay source={{uri:assets[0].uri}} style={ {width:width, height:height}}/>}\n+      {assets && (\n+        <Video\n+          isLooping\n+          isMuted\n+          shouldPlay\n+          source={{ uri: assets[0].uri }}\n+          style={{ width, height, position: 'absolute' }}\n+          resizeMode=\"cover\"\n+        />\n\\ No newline at end of file\n+      )}\n     </View>\n-  )\n-}\n+  );\n+};\n \n const styles = StyleSheet.create({\n- container:{\n-  flex:1,\n-  justifyContent:'center'\n- },\n- video:{\n- \n-  position:\"absolute\"\n- }\n-})\n+  container: {\n+    flex: 1,\n+    justifyContent: 'center',\n+  },\n+});\n \n-export default Page\n+export default Page;\n"
+                },
+                {
+                    "date": 1753867246873,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,20 +4,20 @@\n import { Video } from 'expo-av';\n \n const Page = () => {\n   const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n-  const { width, height } = useWindowDimensions();\n+  const { width } = useWindowDimensions();\n \n   return (\n     <View style={styles.container}>\n       {assets && (\n         <Video\n           isLooping\n           isMuted\n           shouldPlay\n+          resizeMode=\"cover\"\n           source={{ uri: assets[0].uri }}\n-          style={{ width, height, position: 'absolute' }}\n-          resizeMode=\"cover\"\n+          style={[styles.video, { width, height: 250 }]} // adjust height as needed\n         />\n       )}\n     </View>\n   );\n@@ -26,8 +26,13 @@\n const styles = StyleSheet.create({\n   container: {\n     flex: 1,\n     justifyContent: 'center',\n+    alignItems: 'center', // optional: centers the video horizontally\n   },\n+  video: {\n+    borderRadius: 12,\n\\ No newline at end of file\n+    overflow: 'hidden',\n+  },\n });\n \n-export default Page;\n+export default Page;\n"
+                },
+                {
+                    "date": 1753867264386,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,20 +4,20 @@\n import { Video } from 'expo-av';\n \n const Page = () => {\n   const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n-  const { width } = useWindowDimensions();\n+  const { width, height } = useWindowDimensions();\n \n   return (\n     <View style={styles.container}>\n       {assets && (\n         <Video\n           isLooping\n           isMuted\n           shouldPlay\n+          source={{ uri: assets[0].uri }}\n+          style={{ width, height, position: 'absolute' }}\n           resizeMode=\"cover\"\n-          source={{ uri: assets[0].uri }}\n-          style={[styles.video, { width, height: 250 }]} // adjust height as needed\n         />\n       )}\n     </View>\n   );\n@@ -26,13 +26,8 @@\n const styles = StyleSheet.create({\n   container: {\n     flex: 1,\n     justifyContent: 'center',\n-    alignItems: 'center', // optional: centers the video horizontally\n   },\n-  video: {\n-    borderRadius: 12,\n-    overflow: 'hidden',\n-  },\n });\n \n-export default Page;\n\\ No newline at end of file\n+export default Page;\n"
+                },
+                {
+                    "date": 1753867284638,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -4,9 +4,9 @@\n import { Video } from 'expo-av';\n \n const Page = () => {\n   const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n-  const { width, height } = useWindowDimensions();\n+  const { width } = useWindowDimensions();\n \n   return (\n     <View style={styles.container}>\n       {assets && (\n@@ -14,10 +14,10 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width, height, position: 'absolute' }}\n-          resizeMode=\"cover\"\n+          style={{ width, height:350, position: 'absolute' }}\n+    \n         />\n       )}\n     </View>\n   );\n"
+                },
+                {
+                    "date": 1753867295937,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width, height:350, position: 'absolute' }}\n+          style={{ width, height:950, position: 'absolute' }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867301165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width, height:950, position: 'absolute' }}\n+          style={{ width, height:550, position: 'absolute' }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867344931,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n \n const styles = StyleSheet.create({\n   container: {\n     flex: 1,\n-    justifyContent: 'center',\n+    justifyContent: 'justify-between',\n   },\n });\n \n export default Page;\n"
+                },
+                {
+                    "date": 1753867356902,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n \n const styles = StyleSheet.create({\n   container: {\n     flex: 1,\n-    justifyContent: 'justify-between',\n+    justifyContent: 'space-between',\n   },\n });\n \n export default Page;\n"
+                },
+                {
+                    "date": 1753867604863,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width, height:550, position: 'absolute' }}\n+          style={{ width:390, height:550, position: 'absolute' }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867627727,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:390, height:550, position: 'absolute' }}\n+          style={{ width:390, height:550, position: 'absolute', top: 0, left: 0 }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867646133,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:390, height:550, position: 'absolute', top: 0, left: 0 }}\n+          style={{ width:390, height:\"auto\" }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867658774,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:390, height:\"auto\" }}\n+          style={{ width:390, height:550, position: 'absolute', top: 0, left: 0 }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867674164,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:390, height:550, position: 'absolute', top: 0, left: 0 }}\n+          style={{ width:\"100%\", height:\"100%\" }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867769200,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"100%\" }}\n+          style={{ maxWidth:\"100%\", height:\"100%\" }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867778499,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -0,0 +1,33 @@\n+import { View, StyleSheet, useWindowDimensions } from 'react-native';\n+import React from 'react';\n+import { useAssets } from 'expo-asset';\n+import { Video } from 'expo-av';\n+\n+const Page = () => {\n+  const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n+  const { width } = useWindowDimensions();\n+\n+  return (\n+    <View style={styles.container}>\n+      {assets && (\n+        <Video\n+          isLooping\n+          isMuted\n+          shouldPlay\n+          source={{ uri: assets[0].uri }}\n+          style={{ maxWidth:\"100%\", height:\"auto\" }}\n+    \n+        />\n+      )}\n+    </View>\n+  );\n+};\n+\n+const styles = StyleSheet.create({\n+  container: {\n+    flex: 1,\n+    justifyContent: 'space-between',\n+  },\n+});\n+\n+export default Page;\n"
+                },
+                {
+                    "date": 1753867816896,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ maxWidth:\"100%\", height:\"auto\" }}\n+          style={{ Width:\"100%\", height:\"auto\" }}\n     \n         />\n       )}\n     </View>\n@@ -30,37 +30,4 @@\n   },\n });\n \n export default Page;\n-import { View, StyleSheet, useWindowDimensions } from 'react-native';\n-import React from 'react';\n-import { useAssets } from 'expo-asset';\n-import { Video } from 'expo-av';\n-\n-const Page = () => {\n-  const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n-  const { width } = useWindowDimensions();\n-\n-  return (\n-    <View style={styles.container}>\n-      {assets && (\n-        <Video\n-          isLooping\n-          isMuted\n-          shouldPlay\n-          source={{ uri: assets[0].uri }}\n-          style={{ maxWidth:\"100%\", height:\"100%\" }}\n-    \n-        />\n-      )}\n-    </View>\n-  );\n-};\n-\n-const styles = StyleSheet.create({\n-  container: {\n-    flex: 1,\n-    justifyContent: 'space-between',\n-  },\n-});\n-\n-export default Page;\n"
+                },
+                {
+                    "date": 1753867823126,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ Width:\"100%\", height:\"auto\" }}\n+          style={{ width:\"100%\", height:\"auto\" }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867833520,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"auto\" }}\n+          style={{ width:\"100%\", height:\"100%\" }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867870186,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"100%\" }}\n+          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", objectFit:\"cover\"}}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753867963409,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", objectFit:\"cover\"}}\n+          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:0, left:0 }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753868035242,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -27,7 +27,11 @@\n   container: {\n     flex: 1,\n     justifyContent: 'space-between',\n   },\n+  'video-contianer':{\n+    maxWidth:\"100%\",\n+    maxHeight:\"100%\"\n+  }\n });\n \n export default Page;\n"
+                },
+                {
+                    "date": 1753868085603,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:0, left:0 }}\n+          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%' }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753868103501,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%' }}\n+          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753868124699,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n+          style={{ width:\"auto\", height:\"auto\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753868150744,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,16 +9,18 @@\n \n   return (\n     <View style={styles.container}>\n       {assets && (\n+       <View style={styles['video-contianer']}>\n         <Video\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n           style={{ width:\"auto\", height:\"auto\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n     \n         />\n+        </View>\n       )}\n     </View>\n   );\n };\n"
+                },
+                {
+                    "date": 1753868173181,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -9,18 +9,16 @@\n \n   return (\n     <View style={styles.container}>\n       {assets && (\n-       <View style={styles['video-contianer']}>\n         <Video\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n           style={{ width:\"auto\", height:\"auto\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n     \n         />\n-        </View>\n       )}\n     </View>\n   );\n };\n"
+                },
+                {
+                    "date": 1753868179579,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"auto\", height:\"auto\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n+          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753868190471,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -14,9 +14,9 @@\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n-          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\", top:'50%', left:'50%', transform: [{ translateX: -width / 2 }, { translateY: -width / 2 }] }}\n+          style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\" }}\n     \n         />\n       )}\n     </View>\n"
+                },
+                {
+                    "date": 1753868311671,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,5 +1,5 @@\n-import { View, StyleSheet, useWindowDimensions } from 'react-native';\n+import { View, StyleSheet, useWindowDimensions,Text } from 'react-native';\n import React from 'react';\n import { useAssets } from 'expo-asset';\n import { Video } from 'expo-av';\n \n@@ -18,8 +18,11 @@\n           style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\" }}\n     \n         />\n       )}\n+      <View style={{padding:20}}>\n+       <Text style={{fontSize:20}}>Welcome to the app!</Text>\n+      </View>\n     </View>\n   );\n };\n \n"
+                },
+                {
+                    "date": 1753868344293,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -18,9 +18,9 @@\n           style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\" }}\n     \n         />\n       )}\n-      <View style={{padding:20}}>\n+      <View style={{marginTop:80}}>\n        <Text style={{fontSize:20}}>Welcome to the app!</Text>\n       </View>\n     </View>\n   );\n"
+                },
+                {
+                    "date": 1753868483934,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,9 @@\n import { View, StyleSheet, useWindowDimensions,Text } from 'react-native';\n import React from 'react';\n import { useAssets } from 'expo-asset';\n import { Video } from 'expo-av';\n+import { defaultStyles } from '@/constants/Styles';\n \n const Page = () => {\n   const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n   const { width } = useWindowDimensions();\n@@ -18,10 +19,10 @@\n           style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\" }}\n     \n         />\n       )}\n-      <View style={{marginTop:80}}>\n-       <Text style={{fontSize:20}}>Welcome to the app!</Text>\n+      <View style={{marginTop:80,padding:}}>\n+       <Text style={defaultStyles.header}>Welcome to the app!</Text>\n       </View>\n     </View>\n   );\n };\n"
+                },
+                {
+                    "date": 1753868551165,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     \n         />\n       )}\n       <View style={{marginTop:80,padding:}}>\n-       <Text style={defaultStyles.header}>Welcome to the app!</Text>\n+       <Text style={styles.header}>Welcome to the app!</Text>\n       </View>\n     </View>\n   );\n };\n@@ -34,8 +34,14 @@\n   },\n   'video-contianer':{\n     maxWidth:\"100%\",\n     maxHeight:\"100%\"\n+  },\n+  header:{\n+    fontSize: 40,\n+    fontWeight: '700',\n+    textTransform: \"uppercase\",\n+    color:\"white\"\n   }\n });\n \n export default Page;\n"
+                },
+                {
+                    "date": 1753868564821,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -19,9 +19,9 @@\n           style={{ width:\"100%\", height:\"100%\", position:\"absolute\", overflow:\"hidden\" }}\n     \n         />\n       )}\n-      <View style={{marginTop:80,padding:}}>\n+      <View style={{marginTop:80,padding:20}}>\n        <Text style={styles.header}>Welcome to the app!</Text>\n       </View>\n     </View>\n   );\n"
+                },
+                {
+                    "date": 1753868635756,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,9 +20,9 @@\n     \n         />\n       )}\n       <View style={{marginTop:80,padding:20}}>\n-       <Text style={styles.header}>Welcome to the app!</Text>\n+       <Text style={styles.header}>Ready to change the way you money?</Text>\n       </View>\n     </View>\n   );\n };\n"
+                },
+                {
+                    "date": 1753868738643,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -20,10 +20,13 @@\n     \n         />\n       )}\n       <View style={{marginTop:80,padding:20}}>\n-       <Text style={styles.header}>Ready to change the way you money?</Text>\n+       <Text style={styles.header}>Ready to change the way you mney?</Text>\n       </View>\n+      <View style={{styles.button}}>\n+\n+      </View>\n     </View>\n   );\n };\n \n@@ -40,8 +43,13 @@\n     fontSize: 40,\n     fontWeight: '700',\n     textTransform: \"uppercase\",\n     color:\"white\"\n+  },\n+  buttons:{\n+    flexDirection:\"row\",\n+    justifyContent:\"center\",\n+    padding:20\n   }\n });\n \n export default Page;\n"
+                },
+                {
+                    "date": 1753868752045,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       )}\n       <View style={{marginTop:80,padding:20}}>\n        <Text style={styles.header}>Ready to change the way you mney?</Text>\n       </View>\n-      <View style={{styles.button}}>\n+      <View style={{styles.buttons}}>\n \n       </View>\n     </View>\n   );\n"
+                },
+                {
+                    "date": 1753868766063,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -22,9 +22,9 @@\n       )}\n       <View style={{marginTop:80,padding:20}}>\n        <Text style={styles.header}>Ready to change the way you mney?</Text>\n       </View>\n-      <View style={{styles.buttons}}>\n+      <View style={styles.buttons}>\n \n       </View>\n     </View>\n   );\n"
+                },
+                {
+                    "date": 1753868897327,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,9 +1,10 @@\n-import { View, StyleSheet, useWindowDimensions,Text } from 'react-native';\n+import { View, StyleSheet, useWindowDimensions,Text, TouchableOpacity } from 'react-native';\n import React from 'react';\n import { useAssets } from 'expo-asset';\n import { Video } from 'expo-av';\n import { defaultStyles } from '@/constants/Styles';\n+import { Link } from 'expo-router';\n \n const Page = () => {\n   const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n   const { width } = useWindowDimensions();\n@@ -23,9 +24,13 @@\n       <View style={{marginTop:80,padding:20}}>\n        <Text style={styles.header}>Ready to change the way you mney?</Text>\n       </View>\n       <View style={styles.buttons}>\n-\n+        <Link href ={'/login'} asChild>\n+          <TouchableOpacity>\n+             <Text style={{color:\"white\",fontSize:20}}>Login</Text>\n+          </TouchableOpacity>\n+        </Link>\n       </View>\n     </View>\n   );\n };\n"
+                },
+                {
+                    "date": 1753868959486,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -1,8 +1,8 @@\n import { View, StyleSheet, useWindowDimensions,Text, TouchableOpacity } from 'react-native';\n import React from 'react';\n import { useAssets } from 'expo-asset';\n-import { Video } from 'expo-av';\n+import { ResizeMode, Video } from 'expo-av';\n import { defaultStyles } from '@/constants/Styles';\n import { Link } from 'expo-router';\n \n const Page = () => {\n@@ -12,8 +12,9 @@\n   return (\n     <View style={styles.container}>\n       {assets && (\n         <Video\n+          resizeMode={ResizeMode.COVER}\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n"
+                },
+                {
+                    "date": 1753869047003,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   return (\n     <View style={styles.container}>\n       {assets && (\n         <Video\n-          resizeMode={ResizeMode.COVER}\n+          resizeMode={ResizeMode.CONTAIN}\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n"
+                },
+                {
+                    "date": 1753869057299,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   return (\n     <View style={styles.container}>\n       {assets && (\n         <Video\n-          resizeMode={ResizeMode.CONTAIN}\n+          resizeMode={ResizeMode.STRETCH}\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n"
+                },
+                {
+                    "date": 1753869065933,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -12,9 +12,9 @@\n   return (\n     <View style={styles.container}>\n       {assets && (\n         <Video\n-          resizeMode={ResizeMode.STRETCH}\n+          resizeMode={ResizeMode.COVER}\n           isLooping\n           isMuted\n           shouldPlay\n           source={{ uri: assets[0].uri }}\n"
+                },
+                {
+                    "date": 1753869093629,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -25,9 +25,9 @@\n       <View style={{marginTop:80,padding:20}}>\n        <Text style={styles.header}>Ready to change the way you mney?</Text>\n       </View>\n       <View style={styles.buttons}>\n-        <Link href ={'/login'} asChild>\n+        <Link href ={'/login'} style={defaultStyles.pillButton} asChild>\n           <TouchableOpacity>\n              <Text style={{color:\"white\",fontSize:20}}>Login</Text>\n           </TouchableOpacity>\n         </Link>\n"
+                },
+                {
+                    "date": 1753869155072,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -3,8 +3,9 @@\n import { useAssets } from 'expo-asset';\n import { ResizeMode, Video } from 'expo-av';\n import { defaultStyles } from '@/constants/Styles';\n import { Link } from 'expo-router';\n+import Colors from '@/constants/Colors';\n \n const Page = () => {\n   const [assets] = useAssets([require('@/assets/videos/intro.mp4')]);\n   const { width } = useWindowDimensions();\n@@ -25,9 +26,9 @@\n       <View style={{marginTop:80,padding:20}}>\n        <Text style={styles.header}>Ready to change the way you mney?</Text>\n       </View>\n       <View style={styles.buttons}>\n-        <Link href ={'/login'} style={defaultStyles.pillButton} asChild>\n+        <Link href ={'/login'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:Colors.dark}]} asChild>\n           <TouchableOpacity>\n              <Text style={{color:\"white\",fontSize:20}}>Login</Text>\n           </TouchableOpacity>\n         </Link>\n"
+                },
+                {
+                    "date": 1753869187019,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n       </View>\n       <View style={styles.buttons}>\n         <Link href ={'/login'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:Colors.dark}]} asChild>\n           <TouchableOpacity>\n-             <Text style={{color:\"white\",fontSize:20}}>Login</Text>\n+             <Text style={{color:\"white\",fontSize:22,fontWeight'500'}}>Login</Text>\n           </TouchableOpacity>\n         </Link>\n       </View>\n     </View>\n"
+                },
+                {
+                    "date": 1753869207877,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -28,9 +28,9 @@\n       </View>\n       <View style={styles.buttons}>\n         <Link href ={'/login'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:Colors.dark}]} asChild>\n           <TouchableOpacity>\n-             <Text style={{color:\"white\",fontSize:22,fontWeight'500'}}>Login</Text>\n+             <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Login</Text>\n           </TouchableOpacity>\n         </Link>\n       </View>\n     </View>\n"
+                },
+                {
+                    "date": 1753869227459,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -32,8 +32,15 @@\n              <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Login</Text>\n           </TouchableOpacity>\n         </Link>\n       </View>\n+      <View style={styles.buttons}>\n+        <Link href ={'/login'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:Colors.dark}]} asChild>\n+          <TouchableOpacity>\n+             <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Sign Up</Text>\n+          </TouchableOpacity>\n+        </Link>\n+      </View>\n     </View>\n   );\n };\n \n"
+                },
+                {
+                    "date": 1753869275419,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,16 +31,15 @@\n           <TouchableOpacity>\n              <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Login</Text>\n           </TouchableOpacity>\n         </Link>\n-      </View>\n-      <View style={styles.buttons}>\n-        <Link href ={'/login'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:Colors.dark}]} asChild>\n+        <Link href ={'/signup'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:Colors.dark}]} asChild>\n           <TouchableOpacity>\n              <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Sign Up</Text>\n           </TouchableOpacity>\n         </Link>\n       </View>\n+      \n     </View>\n   );\n };\n \n"
+                },
+                {
+                    "date": 1753869293073,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -31,9 +31,9 @@\n           <TouchableOpacity>\n              <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Login</Text>\n           </TouchableOpacity>\n         </Link>\n-        <Link href ={'/signup'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:Colors.dark}]} asChild>\n+        <Link href ={'/signup'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:'white'}]} asChild>\n           <TouchableOpacity>\n              <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Sign Up</Text>\n           </TouchableOpacity>\n         </Link>\n"
+                },
+                {
+                    "date": 1753869303481,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n@@ -33,9 +33,9 @@\n           </TouchableOpacity>\n         </Link>\n         <Link href ={'/signup'} style={[defaultStyles.pillButton,{flex:1,backgroundColor:'white'}]} asChild>\n           <TouchableOpacity>\n-             <Text style={{color:\"white\",fontSize:22,fontWeight:500}}>Sign Up</Text>\n+             <Text style={{,fontSize:22,fontWeight:500}}>Sign Up</Text>\n           </TouchableOpacity>\n         </Link>\n       </View>\n       \n"
+                }
+            ],
+            "date": 1753859898202,
+            "name": "Commit-0",
+            "content": "import { View, Text } from 'react-native'\nimport React from 'react'\n\nconst Page = () => {\n  return (\n    <View>\n      <Text>Page</Text>\n    </View>\n  )\n}\n\nexport default Page"
+        }
+    ]
+}

@@ -1,0 +1,18 @@
+{
+    "sourceFile": "app/helo.tsx",
+    "activeCommit": 0,
+    "commits": [
+        {
+            "activePatchIndex": 0,
+            "patches": [
+                {
+                    "date": 1753865989426,
+                    "content": "Index: \n===================================================================\n--- \n+++ \n"
+                }
+            ],
+            "date": 1753865989426,
+            "name": "Commit-0",
+            "content": "import { View, Text } from 'react-native'\nimport React from 'react'\n\nconst HelpScreen = () => {\n  return (\n    <View>\n      <Text>HelpScreen</Text>\n    </View>\n  )\n}\n\nexport default HelpScreen"
+        }
+    ]
+}
